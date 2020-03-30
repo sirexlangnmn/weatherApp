@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<!--* Video Tutorial link : https://www.youtube.com/watch?v=7l-ZAuU8TXc&list=PLhAYqyL8bdjy10dbfKoxnO4CXyGR9quCs&index=3 -->
+<!--* Tutorial title : Weight Converter App With JavaScript & Bootstrap 4 -->
+<!--* https://www.bootstrapcdn.com/bootswatch/ -->
+<!--* https://bootswatch.com/cerulean/ -->
+
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Weight Converter</title>
+        <link rel="stylesheet" type="text/css" href="weightConverter.css">
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/cerulean/bootstrap.min.css">
+    </head>
+
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center mb-3">Weight Converter</h1>
+                <form>
+                    <div class="row">
+                        <div class="col-md">
+                            <div class="form-group">
+                                <!-- <input id="lbsInput" class="form-control form-control-md" placeholder=""> -->
+                                <!-- <input type="text" class="form-control form-control-md" id="InUnit" name="InUnit" value="0" onkeypress="toGrams()" onkeydown="toGrams()" onkeyup="toGrams()" onfocus="toGrams()" onchange="toGrams()"> -->
+                                <input type="text" class="form-control form-control-md" id="inputValue" name="inputValue" onkeyup="indexFunction()">
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-group">
+                                <select class="custom-select" id="baseWeight" name="baseWeight" onchange="indexFunction()">
+                                  <option value="">Choose base weight</option>
+                                  <option value="g"> (g)  Gram</option>
+                                  <option value="mg">(mg) Milligrams</option>
+                                  <option value="kg">(kg) Kilograms</option>
+                                  <option value="oz">(oz) Ounces</option>
+                                  <option value="lb">(lb) Pounds</option>
+                                  <option value="ozt">(ozt) Troy Ounces</option>
+                                  <option value="dwt">(dwt) Pennyweight</option>
+                                  <option value="ct">(ct) Carats</option>
+                                  <option value="ticals">Ticals</option>
+                                  <option value="mm">(mm) Mommes</option>
+                                  <option value="gr">(gr) Grains</option>
+                                  <option value="newtons">(N) Newtons</option>
+                                  <option value="tsg">(tsg) Taels (Singapore)</option>
+                                  <option value="troc"> Taels (Republic of China)</option>
+                                  <option value="thk">Taels (Hong Kong)</option>
+                                  <option value="tons">Tons</option>
+                                  <option value="mcg">(mcg) Micrograms</option>
+                                  <option value="st">(st) Stones</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <button type="reset" class="btn btn-primary">Start Over</button>
+                        </div>
+                    </div>
+                </form>
+                <div id="output">
+                    <div class="row">
+                        <div class="col-md">
+                            <div class="alert alert-dismissible alert-primary">
+                                <strong>(g) Grams: </strong> <span id="gramsOutput">0</span>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="alert alert-dismissible alert-danger">
+                                <strong>(kg) Kilograms: </strong> <span id="kgOutput">0</span>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="alert alert-dismissible alert-success">
+                                <strong>(oz) Ounces: </strong> <span id="ozOutput">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md">
+                            <div class="alert alert-dismissible alert-primary">
+                                <strong>(mg) Milligrams: </strong> <span id="mgOutput">0</span>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="alert alert-dismissible alert-danger">
+                                <strong>(lb) Pounds: </strong> <span id="lbOutput">0</span>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="alert alert-dismissible alert-success">
+                                <strong>(ozt) Troy Ounces: </strong> <span id="oztOutput">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md">
+                            <div class="alert alert-dismissible alert-primary">
+                                <strong>(dwt) Pennyweight: </strong> <span id="dwtOutput">0</span>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="alert alert-dismissible alert-danger">
+                                <strong>(ct) Carats: </strong> <span id="ctOutput">0</span>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="alert alert-dismissible alert-success">
+                                <strong> Ticals: </strong> <span id="ticalsOutput">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md">
+                            <div class="alert alert-dismissible alert-primary">
+                                <strong>(mm) Mommes: </strong> <span id="mmOutput">0</span>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="alert alert-dismissible alert-danger">
+                                <strong>(gr) Grains: </strong> <span id="grOutput">0</span>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="alert alert-dismissible alert-success">
+                                <strong>(N) Newtons: </strong> <span id="newtonsOutput">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md">
+                            <div class="alert alert-dismissible alert-primary">
+                                <strong> Taels (Singapore): </strong> <span id="tsgOutput">0</span>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="alert alert-dismissible alert-danger">
+                                <strong> Taels (Republic of China): </strong> <span id="trocOutput">0</span>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="alert alert-dismissible alert-success">
+                                <strong> Taels (Hong Kong): </strong> <span id="thkOutput">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md">
+                            <div class="alert alert-dismissible alert-primary">
+                                <strong> Tons: </strong> <span id="tonOutput">0</span>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="alert alert-dismissible alert-danger">
+                                <strong>(mcg) Micrograms: </strong> <span id="mcgOutput">0</span>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="alert alert-dismissible alert-success">
+                                <strong>(st) Stones: </strong> <span id="stOutput">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+    <script src="weightConverter.js"></script>
+</html>
